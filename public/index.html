@@ -1,0 +1,49 @@
+<html>
+<head>
+	<style type="text/css">
+    #editor {
+        position: absolute;
+        width: 500px;
+        height: 400px;
+    }
+	</style>
+</head>
+<body>
+    <div id="editor">@these @are @tags
+Feature: Serve coffee
+  Coffee should not be served until paid for
+  Coffee should not be served until the button has been pressed
+  If there is no coffee left then money should be refunded
+  
+  Scenario Outline: Eating
+    Given there are <start> cucumbers
+    When I eat <eat> cucumbers
+    Then I should have <left> cucumbers
+
+    Examples:
+      | start | eat | left |
+      |  12   |  5  |  7   |
+      |  20   |  5  |  15  |    
+
+  Scenario: Buy last coffee
+    Given there are 1 coffees left in the machine
+    And I have deposited 1$ 
+    When I press the coffee button
+    Then I should be served a "coffee"
+    
+  # this a comment
+  
+  """
+  this is a 
+  pystring
+  """
+    </div>
+    <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="mode-gherkin.js" type="text/javascript" charset="utf-8"></script>
+    <script src="worker-gherkin.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.getSession().setMode("ace/mode/gherkin");
+    </script>
+</body>
+</html>
